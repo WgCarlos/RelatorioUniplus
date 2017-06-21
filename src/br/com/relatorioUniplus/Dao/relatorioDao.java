@@ -1,5 +1,8 @@
 package br.com.relatorioUniplus.Dao;
 
-public interface relatorioDao {
+import br.com.relatorioUniplus.model.Relatorio;
 
+public interface relatorioDao {
+	
+	public Relatorio buscar(int identidade); 
 }
