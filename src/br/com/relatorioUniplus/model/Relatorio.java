@@ -4,7 +4,8 @@ import java.sql.Date;
 
 public class Relatorio {
 	
-	private int identidade;
+	private int id;
+	private int numeronotafiscal;
 	private int parcela;
 	private Date emissao;
 	private Date vencimento;
@@ -22,11 +23,17 @@ public class Relatorio {
 	private String numeroendereco;
 	private float valortotalnota;
 	
-	public int getIdentidade() {
-		return identidade;
+	public int getId() {
+		return id;
 	}
-	public void setIdentidade(int identidade) {
-		this.identidade = identidade;
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getNumeronotafiscal() {
+		return numeronotafiscal;
+	}
+	public void setNumeronotafiscal(int numeronotafiscal) {
+		this.numeronotafiscal = numeronotafiscal;
 	}
 	public int getParcela() {
 		return parcela;
@@ -137,9 +144,10 @@ public class Relatorio {
 		result = prime * result + ((emissao == null) ? 0 : emissao.hashCode());
 		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
-		result = prime * result + identidade;
+		result = prime * result + id;
 		result = prime * result + ((modelo == null) ? 0 : modelo.hashCode());
 		result = prime * result + ((numeroendereco == null) ? 0 : numeroendereco.hashCode());
+		result = prime * result + numeronotafiscal;
 		result = prime * result + parcela;
 		result = prime * result + ((razaosozial == null) ? 0 : razaosozial.hashCode());
 		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
@@ -201,7 +209,7 @@ public class Relatorio {
 				return false;
 		} else if (!estado.equals(other.estado))
 			return false;
-		if (identidade != other.identidade)
+		if (id != other.id)
 			return false;
 		if (modelo == null) {
 			if (other.modelo != null)
@@ -212,6 +220,8 @@ public class Relatorio {
 			if (other.numeroendereco != null)
 				return false;
 		} else if (!numeroendereco.equals(other.numeroendereco))
+			return false;
+		if (numeronotafiscal != other.numeronotafiscal)
 			return false;
 		if (parcela != other.parcela)
 			return false;
@@ -234,6 +244,7 @@ public class Relatorio {
 			return false;
 		return true;
 	}
+
 	
 	
 }
