@@ -9,28 +9,25 @@ import br.com.relatorioUniplus.Factory.ConnectionFactory;
 import br.com.relatorioUniplus.model.Relatorio;
 
 public class RelatorioDaoImpl extends ConnectionFactory implements relatorioDao {
-	private static final String TABLE = "notafiscal";
-	private static final String COLUMNS = "numeronotafiscal";
 	
 	@Override
 	public Relatorio buscar(int id) {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		StringBuilder sql = new StringBuilder();
 		
-		sql.append("SELECT * FROM");
-		sql.append(TABLE);
-		sql.append(" ");
-		sql.append("WHERE numeronotafiscal = ?");
+		
 		try {
 			con = getConnection();
 			Relatorio relatorio = new Relatorio();
-			ps = con.prepareStatement(sql.toString());
+			String SQL = "SELECT d.codigo, d.valor, e.nome, c.descricao, d.data, d.enderecoentrega, d.bairroentrega, d.complementoentrega, d.cepentrega, ci.nome, es.nome, e.cnpjcpf, e.telefone, e.numeroenderecoentrega FROM dav d join entidade e on d.idcliente = e.id and d.codigo = ? join condicaopagamento c on d.idcondicaopagamento = c.id join cidade ci on d.idcidadeentrega = ci.id join estado es on d.idestadoentrega = es.id"; 
+			ps = con.prepareStatement(SQL);
 			rs = ps.executeQuery();
 			
 			rs.next();
-			relatorio.setNumeronotafiscal(rs.getInt("numeronotafical"));
+			relatorio.setId(rs.getInt("codigo"));
+			relatorio.setValortotalnota(rs.getFloat("valor"));
+			relatorio.setNome(rs.getString("nome"));
 			
 			ps.close();
 			rs.close();

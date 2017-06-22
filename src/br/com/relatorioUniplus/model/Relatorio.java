@@ -5,12 +5,10 @@ import java.sql.Date;
 public class Relatorio {
 	
 	private int id;
-	private int numeronotafiscal;
 	private int parcela;
 	private Date emissao;
 	private Date vencimento;
-	private String documento;
-	private String razaosozial;
+	private String nome;
 	private String endereco;
 	private String bairro;
 	private String complemento;
@@ -19,7 +17,6 @@ public class Relatorio {
 	private String estado;
 	private String cnpjcpf;
 	private String telefone;
-	private String modelo;
 	private String numeroendereco;
 	private float valortotalnota;
 	
@@ -28,12 +25,6 @@ public class Relatorio {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getNumeronotafiscal() {
-		return numeronotafiscal;
-	}
-	public void setNumeronotafiscal(int numeronotafiscal) {
-		this.numeronotafiscal = numeronotafiscal;
 	}
 	public int getParcela() {
 		return parcela;
@@ -53,17 +44,11 @@ public class Relatorio {
 	public void setVencimento(Date vencimento) {
 		this.vencimento = vencimento;
 	}
-	public String getDocumento() {
-		return documento;
+	public String getNome() {
+		return nome;
 	}
-	public void setDocumento(String documento) {
-		this.documento = documento;
-	}
-	public String getRazaosozial() {
-		return razaosozial;
-	}
-	public void setRazaosozial(String razaosozial) {
-		this.razaosozial = razaosozial;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	public String getEndereco() {
 		return endereco;
@@ -113,12 +98,6 @@ public class Relatorio {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public String getModelo() {
-		return modelo;
-	}
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
 	public String getNumeroendereco() {
 		return numeroendereco;
 	}
@@ -140,16 +119,13 @@ public class Relatorio {
 		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
 		result = prime * result + ((cnpjcpf == null) ? 0 : cnpjcpf.hashCode());
 		result = prime * result + ((complemento == null) ? 0 : complemento.hashCode());
-		result = prime * result + ((documento == null) ? 0 : documento.hashCode());
 		result = prime * result + ((emissao == null) ? 0 : emissao.hashCode());
 		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((modelo == null) ? 0 : modelo.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((numeroendereco == null) ? 0 : numeroendereco.hashCode());
-		result = prime * result + numeronotafiscal;
 		result = prime * result + parcela;
-		result = prime * result + ((razaosozial == null) ? 0 : razaosozial.hashCode());
 		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
 		result = prime * result + Float.floatToIntBits(valortotalnota);
 		result = prime * result + ((vencimento == null) ? 0 : vencimento.hashCode());
@@ -189,11 +165,6 @@ public class Relatorio {
 				return false;
 		} else if (!complemento.equals(other.complemento))
 			return false;
-		if (documento == null) {
-			if (other.documento != null)
-				return false;
-		} else if (!documento.equals(other.documento))
-			return false;
 		if (emissao == null) {
 			if (other.emissao != null)
 				return false;
@@ -211,24 +182,17 @@ public class Relatorio {
 			return false;
 		if (id != other.id)
 			return false;
-		if (modelo == null) {
-			if (other.modelo != null)
+		if (nome == null) {
+			if (other.nome != null)
 				return false;
-		} else if (!modelo.equals(other.modelo))
+		} else if (!nome.equals(other.nome))
 			return false;
 		if (numeroendereco == null) {
 			if (other.numeroendereco != null)
 				return false;
 		} else if (!numeroendereco.equals(other.numeroendereco))
 			return false;
-		if (numeronotafiscal != other.numeronotafiscal)
-			return false;
 		if (parcela != other.parcela)
-			return false;
-		if (razaosozial == null) {
-			if (other.razaosozial != null)
-				return false;
-		} else if (!razaosozial.equals(other.razaosozial))
 			return false;
 		if (telefone == null) {
 			if (other.telefone != null)
@@ -244,7 +208,4 @@ public class Relatorio {
 			return false;
 		return true;
 	}
-
-	
-	
 }
