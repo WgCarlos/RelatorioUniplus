@@ -212,6 +212,14 @@ public class Relatorio {
 		return true;
 	}
 	
+	@Override
+	public String toString() {
+		return "Relatorio [id=" + id + ", emissao=" + emissao + ", vencimento=" + vencimento + ", parcela=" + parcela
+				+ ", nome=" + nome + ", endereco=" + endereco + ", bairro=" + bairro + ", complemento=" + complemento
+				+ ", cep=" + cep + ", cidade=" + cidade + ", estado=" + estado + ", cnpjcpf=" + cnpjcpf + ", telefone="
+				+ telefone + ", numeroendereco=" + numeroendereco + ", valortotalnota=" + valortotalnota + "]";
+	}
+	
 	
 
 }

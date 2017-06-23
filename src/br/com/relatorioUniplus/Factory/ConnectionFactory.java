@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 	
-	private static String STR_CONEXAO = "jdbc:postgresql://locahost/unico";
-	private static String USUARIO = "servidor";
+	private static String STR_CONEXAO = "jdbc:postgresql://localhost/unico";
+	private static String USUARIO = "postgres";
 	private static String SENHA = "postgres";
 	
 		public static Connection getConnection(){
