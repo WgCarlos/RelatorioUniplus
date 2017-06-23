@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import br.com.relatorioUniplus.Dao.RelatorioDaoImpl;
 import br.com.relatorioUniplus.model.Relatorio;
@@ -39,7 +40,6 @@ public class Principal extends JFrame {
 			}
 		});
 	}
-
 	/**
 	 * Create the frame.
 	 */
@@ -70,8 +70,7 @@ public class Principal extends JFrame {
 				Relatorio relatorio = new Relatorio();
 				try {
 					RelatorioDaoImpl dao = new RelatorioDaoImpl();
-					
-					
+					relatorio = dao.buscar(Integer.parseInt(textField.getText()));
 				} catch (Exception e) {
 				}
 			}
