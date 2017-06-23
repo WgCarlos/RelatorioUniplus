@@ -25,9 +25,20 @@ public class RelatorioDaoImpl extends ConnectionFactory implements relatorioDao 
 			rs = ps.executeQuery();
 			
 			rs.next();
-			relatorio.setId(rs.getInt("codigo"));
-			relatorio.setValortotalnota(rs.getFloat("valor"));
-			relatorio.setNome(rs.getString("nome"));
+			relatorio.setId(rs.getInt("d.codigo"));
+			relatorio.setValortotalnota(rs.getFloat("d.valor"));
+			relatorio.setNome(rs.getString("e.nome"));
+			relatorio.setParcela(rs.getString("c.descricao"));
+			relatorio.setEmissao(rs.getDate("d.data"));
+			relatorio.setEndereco(rs.getString("d.enderecoentrega"));
+			relatorio.setBairro(rs.getString("d.bairroentrega"));
+			relatorio.setComplemento(rs.getString("d.complemento"));
+			relatorio.setCep(rs.getString("d.cepentrega"));
+			relatorio.setCidade(rs.getString("ci.nome"));
+			relatorio.setEstado(rs.getString("es.nome"));
+			relatorio.setCnpjcpf(rs.getString("e.cnpjcpf"));
+			relatorio.setTelefone(rs.getString("e.telefone"));
+			relatorio.setNumeroendereco(rs.getString("e.numeroenderecoentrega"));
 			
 			ps.close();
 			rs.close();

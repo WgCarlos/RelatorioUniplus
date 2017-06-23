@@ -5,9 +5,9 @@ import java.sql.Date;
 public class Relatorio {
 	
 	private int id;
-	private int parcela;
 	private Date emissao;
 	private Date vencimento;
+	private String parcela;
 	private String nome;
 	private String endereco;
 	private String bairro;
@@ -26,10 +26,10 @@ public class Relatorio {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getParcela() {
+	public String getParcela() {
 		return parcela;
 	}
-	public void setParcela(int parcela) {
+	public void setParcela(String parcela) {
 		this.parcela = parcela;
 	}
 	public Date getEmissao() {
@@ -125,7 +125,7 @@ public class Relatorio {
 		result = prime * result + id;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((numeroendereco == null) ? 0 : numeroendereco.hashCode());
-		result = prime * result + parcela;
+		result = prime * result + ((parcela == null) ? 0 : parcela.hashCode());
 		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
 		result = prime * result + Float.floatToIntBits(valortotalnota);
 		result = prime * result + ((vencimento == null) ? 0 : vencimento.hashCode());
@@ -192,7 +192,10 @@ public class Relatorio {
 				return false;
 		} else if (!numeroendereco.equals(other.numeroendereco))
 			return false;
-		if (parcela != other.parcela)
+		if (parcela == null) {
+			if (other.parcela != null)
+				return false;
+		} else if (!parcela.equals(other.parcela))
 			return false;
 		if (telefone == null) {
 			if (other.telefone != null)
@@ -208,4 +211,7 @@ public class Relatorio {
 			return false;
 		return true;
 	}
+	
+	
+
 }
