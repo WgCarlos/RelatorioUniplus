@@ -11,7 +11,7 @@ import br.com.relatorioUniplus.model.Relatorio;
 public class RelatorioDaoImpl extends ConnectionFactory implements RelatorioDao {
 	
 	@Override
-	public Relatorio buscar(int id) {
+	public Relatorio buscar(String id) {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -19,23 +19,24 @@ public class RelatorioDaoImpl extends ConnectionFactory implements RelatorioDao 
 		try {
 			con = getConnection();
 			Relatorio relatorio = new Relatorio();
-			String SQL = "SELECT d.codigo, d.valor, e.nome, c.descricao, d.data, d.enderecoentrega, d.bairroentrega, "
-				+ "d.complementoentrega, d.cepentrega, ci.nome, es.nome, e.cnpjcpf, e.telefone, e.numeroenderecoentrega FROM dav d "
-				+ "join entidade e on d.idcliente = e.id "
-				+ "and d.codigo = ? "
-				+ "join condicaopagamento c on d.idcondicaopagamento = c.id "
-				+ "join cidade ci on d.idcidadeentrega = ci.id "
-				+ "join estado es on d.idestadoentrega = es.id"; 
+			String SQL = "SELECT n.numeronotafiscal, n.valortotalnota, e.nome, co.descricao, n.emissao, n.enderecoentrega, "
+					+ "n.bairroentrega, n.complementoentrega, n.cepentrega, ci.nome, es.nome, e.cnpjcpf, e.telefone, "
+					+ "e.numeroendereco FROM notafiscal n "
+					+ "join entidade e on n.identidade = e.id and n.numeronotafiscal = ? "
+					+ "join financeiro f on n.id = f.idorigem "
+					+ "join cidade ci on n.idcidadeentrega = ci.id "
+					+ "join estado es on n.idestadoentrega = es.id "
+					+ "join condicaopagamento co on n.idcondicaopagto = co.id"; 
 			
 			ps = con.prepareStatement(SQL);
-			ps.setInt(1, id);
+			ps.setString(1, id);
 			rs = ps.executeQuery();
 			rs.next();
-			relatorio.setId(rs.getInt("codigo")); 
-			relatorio.setValortotalnota(rs.getFloat("valor"));
+			relatorio.setId(rs.getInt("numeronotafiscal")); 
+			relatorio.setValortotalnota(rs.getFloat("valortotalnota"));
 			relatorio.setNome(rs.getString("nome"));
 			relatorio.setParcela(rs.getString("descricao"));
-			relatorio.setEmissao(rs.getDate("data"));
+			relatorio.setEmissao(rs.getDate("emissao"));
 			relatorio.setEndereco(rs.getString("enderecoentrega"));
 			relatorio.setBairro(rs.getString("bairroentrega"));
 			relatorio.setComplemento(rs.getString("complementoentrega"));
@@ -44,7 +45,7 @@ public class RelatorioDaoImpl extends ConnectionFactory implements RelatorioDao 
 			relatorio.setEstado(rs.getString("nome"));
 			relatorio.setCnpjcpf(rs.getString("cnpjcpf"));
 			relatorio.setTelefone(rs.getString("telefone"));
-			relatorio.setNumeroendereco(rs.getString("numeroenderecoentrega"));
+			relatorio.setNumeroendereco(rs.getString("numeroendereco"));
 			
 			ps.close();
 			rs.close();
@@ -52,7 +53,7 @@ public class RelatorioDaoImpl extends ConnectionFactory implements RelatorioDao 
 			return relatorio;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("erro ao buscar funcionario", e);
+			throw new RuntimeException("erro ao buscar Nota", e);
 		}
 	}
 

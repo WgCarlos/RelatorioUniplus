@@ -4,5 +4,5 @@ import br.com.relatorioUniplus.model.Relatorio;
 
 public interface RelatorioDao {
 	
-	public Relatorio buscar(int identidade); 
+	public Relatorio buscar(String id);
 }

@@ -10,7 +10,7 @@ public class Main {
 		
 		RelatorioDao dao = new RelatorioDaoImpl();
 		
-		Relatorio relatorio = dao.buscar(170);
+		Relatorio relatorio = dao.buscar("353");
 		
 		System.out.println(relatorio.toString());
 	}

@@ -70,7 +70,7 @@ public class Principal extends JFrame {
 				Relatorio relatorio = new Relatorio();
 				try {
 					RelatorioDaoImpl dao = new RelatorioDaoImpl();
-					relatorio = dao.buscar(Integer.parseInt(textField.getText()));
+					relatorio = dao.buscar(textField.getText());
 				} catch (Exception e) {
 				}
 			}
